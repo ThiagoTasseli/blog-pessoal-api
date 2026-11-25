@@ -1,4 +1,11 @@
-# API BLOG PESSOAL
+# 📝 Blog Pessoal — API REST
+
+![Java](https://img.shields.io/badge/Java-17-orange?style=flat-square&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4-6DB33F?style=flat-square&logo=springboot)
+![JWT](https://img.shields.io/badge/Auth-JWT-black?style=flat-square&logo=jsonwebtokens)
+![Swagger](https://img.shields.io/badge/Docs-Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black)
+
+🖥️ **Front-end:** [blog-pessoal-web](https://github.com/ThiagoTasseli/blog-pessoal-web)
 
 🔗 **Link de Teste da API:** https://blogpessoal-oros.onrender.com/swagger-ui/index.html
 
@@ -57,7 +64,8 @@ Este projeto é uma API RESTful para um **Blog Pessoal**, desenvolvida como part
 *   **PostgreSQL** (Produção - Render)
 *   **Docker** (Para deploy no Render)
 *   **Insomnia/Postman** (Testes de API)
-*   **SpringDoc (Swagger)** (Documentação automática da API - se implementado)
+*   **SpringDoc (Swagger)** (documentação automática da API)
+*   **JUnit + H2** (testes de integração do controller de usuários)
 
 * * *
 
@@ -69,6 +77,23 @@ O projeto possui os seguintes relacionamentos principais:
 *   Cada **Postagem** pertence a um único **Tema** (ManyToOne)
 *   Um **Usuário** pode criar **muitas Postagens** (OneToMany)
 *   Cada **Postagem** pertence a um único **Usuário** (ManyToOne)
+
+* * *
+
+## ▶️ Como rodar localmente
+
+```bash
+git clone https://github.com/ThiagoTasseli/blog-pessoal-api.git
+cd blog-pessoal-api
+
+# Perfil dev usa MySQL local (db_blogpessoal, criado automaticamente)
+export DB_PASSWORD=sua_senha_mysql
+export JWT_SECRET=$(openssl rand -base64 32)   # opcional em dev
+
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+```
+
+Em produção (perfil `prod`), configure `POSTGRESHOST`, `POSTGRESPORT`, `POSTGRESDATABASE`, `POSTGRESUSER`, `POSTGRESPASSWORD` e `JWT_SECRET`.
 
 * * *
 
